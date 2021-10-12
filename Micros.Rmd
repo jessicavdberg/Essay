@@ -1,0 +1,355 @@
+---
+# IMPORTANT: Change settings here, but DO NOT change the spacing.
+# Remove comments and add values where applicable.
+# The descriptions below should be self-explanatory
+
+# title: "Helping You Write Academic Papers in R using Texevier"
+#subtitle: "This will appear as Right Header"
+
+documentclass: "elsarticle"
+
+# --------- Thesis title (Optional - set to FALSE by default).
+# You can move the details below around as you please.
+Thesis_FP: TRUE
+Entry1: "COVID-19 vaccine Lottery Field Experiment"
+Entry2: "\\textbf{Cassandra Pengelly}" # textbf for bold
+Entry3: "Behavioural Economics 871 Essay"
+#Uni_Logo: Tex/Logo.png # Place a logo in the indicated location (from your root, e.g. defaults to ~/Tex/Logo.png) and uncomment this line. Leave uncommented for no image
+#Logo_width: 0.3 # If using a logo - use this to set width (size) of image
+Entry4: "15 October 2021"
+# Entry5: "Stellenbosch University"
+# Entry6: April 2020
+# Entry7:
+# Entry8:
+
+# --------- Front Page
+# Comment: ----- Follow this pattern for up to 5 authors
+# AddTitle: TRUE # Use FALSE when submitting to peer reviewed platform. This will remove author names.
+# Author1: "Nico Katzke^[__Contributions:__  \\newline _The authors would like to thank no institution for money donated to this project. Thank you sincerely._]"  # First Author - note the thanks message displayed as an italic footnote of first page.
+# Ref1: "Prescient Securities, Cape Town, South Africa" # First Author's Affiliation
+# Email1: "nfkatzke\\@gmail.com" # First Author's Email address
+# 
+# Author2: "John Smith"
+# Ref2: "Some other Institution, Cape Town, South Africa"
+# Email2: "John\\@gmail.com"
+# CommonAffiliation_12: TRUE # If Author 1 and 2 have a common affiliation. Works with _13, _23, etc.
+# 
+# Author3: "John Doe"
+# Email3: "Joe\\@gmail.com"
+# 
+# CorrespAuthor_1: TRUE  # If corresponding author is author 3, e.g., use CorrespAuthor_3: TRUE
+# 
+# # Comment out below to remove both. JEL Codes only given if keywords also given.
+# keywords: "Multivariate GARCH \\sep Kalman Filter \\sep Copula" # Use \\sep to separate
+# JELCodes: "L250 \\sep L100"
+
+# ----- Manage headers and footers:
+#BottomLFooter: $Title$
+#BottomCFooter:
+#TopLHeader: \leftmark # Adds section name at topleft. Remove comment to add it.
+BottomRFooter: "\\footnotesize Page \\thepage" # Add a '#' before this line to remove footer.
+addtoprule: TRUE
+addfootrule: TRUE               # Use if footers added. Add '#' to remove line.
+
+# --------- page margins:
+margin: 2.3 # Sides
+bottom: 2 # bottom
+top: 2.5 # Top
+HardSet_layout: TRUE # Hard-set the spacing of words in your document. This will stop LaTeX squashing text to fit on pages, e.g.
+# This is done by hard-setting the spacing dimensions. Set to FALSE if you want LaTeX to optimize this for your paper.
+
+# --------- Line numbers
+linenumbers: FALSE # Used when submitting to journal
+
+# ---------- References settings:
+# You can download cls format here: https://www.zotero.org/ - simply search for your institution. You can also edit and save cls formats here: https://editor.citationstyles.org/about/
+# Hit download, store it in Tex/ folder, and change reference below - easy.
+bibliography: Tex/ref.bib       # Do not edit: Keep this naming convention and location.
+csl: Tex/harvard-stellenbosch-university.csl # referencing format used.
+# By default, the bibliography only displays the cited references. If you want to change this, you can comment out one of the following:
+#nocite: '@*' # Add all items in bibliography, whether cited or not
+# nocite: |  # add specific references that aren't cited
+#  @grinold2000
+#  @Someoneelse2010
+
+# ---------- General:
+RemovePreprintSubmittedTo: TRUE  # Removes the 'preprint submitted to...' at bottom of titlepage
+Journal: "Journal of Finance"   # Journal that the paper will be submitting to, if RemovePreprintSubmittedTo is set to TRUE.
+toc: TRUE                       # Add a table of contents
+numbersections: TRUE             # Should sections (and thus figures and tables) be numbered?
+fontsize: 11pt                  # Set fontsize
+linestretch: 1.2                # Set distance between lines.
+link-citations: TRUE            # This creates dynamic links to the papers in reference list.
+
+### Adding additional latex packages:
+# header-includes:
+#    - \usepackage{colortbl} # Add additional packages here.
+
+output:
+  pdf_document:
+    keep_tex: TRUE
+    template: Tex/TexDefault.txt
+    fig_width: 3.5 # Adjust default figure sizes. This can also be done in the chunks of the text.
+    fig_height: 3.5
+# abstract: |
+  # Abstract to be written here. The abstract should not be too long and should provide the reader with a good understanding what you are writing about. Academic papers are not like novels where you keep the reader in suspense. To be effective in getting others to read your paper, be as open and concise about your findings here as possible. Ideally, upon reading your abstract, the reader should feel he / she must read your paper in entirety.
+---
+
+<!-- First: Set your default preferences for chunk options: -->
+
+<!-- If you want a chunk's code to be printed, set echo = TRUE. message = FALSE stops R printing ugly package loading details in your final paper too. I also suggest setting warning = FALSE and checking for warnings in R, else you might find ugly warnings in your paper. -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
+# Note: Include = FALSE implies the code is executed, but not printed in your pdf.
+# warning and message = FALSE implies ugly messages and warnings are removed from your pdf.
+# These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
+
+# Lets load in example data, and see how this can be stored and later called from your 'data' folder.
+if(!require("tidyverse")) install.packages("tidyverse")
+library(tidyverse)
+Example_data <- Texevier::Ex_Dat
+
+# Notice that as you are working in a .Rproj file (I am assuming you are) - the relative paths of your directories start at your specified root.
+# This means that when working in a .Rproj file, you never need to use getwd() - it is assumed as your base root automatically.
+write_rds(Example_data, path = "data/Example_data.rds")
+
+```
+
+
+<!-- ############################## -->
+<!-- # Start Writing here: -->
+<!-- ############################## -->
+
+# Introduction \label{Introduction}
+
+# Experiment Design \label{design}
+
+
+Have 1 control group: no messages, no lotto
+Have 4 treatment groups:
+•	Send messages
+•	1 lottery where you are entered if you got at least 1 vaccination 
+•	1 lottery where a friend has to refer you
+•	1 regret lottery: everyone is entered into the lotto (receive sms) and can only win if vaccinated
+Can randomize across municipalities or provinces
+
+
+Research question: could a vaccine lottery improve vaccination rates in South Africa?
+Many South Africans are hesitant to get the COVID vaccine. As STATSA shows, amount of people have received the vaccine so far. Critical to reach herd immunity is improving vaccination rates. 
+In order to improve the take-up of vaccinations, a field experiment designed around a vaccination lottery is proposed. While some governments have considered and experimented with lump-sum payments, behavioural economics could provide a more cost-effective solution. Individuals have a tendency to overweight small probabilities and this overestimate their chances of winning a lottery. In South Africa, 
+Lit Review
+Theory: overweight small probabilities, gambling, social preferences, regret avoidance
+Empirical: vaccine field designs, lottery incentives, regret lottery incentives
+Several authors have experimented with lotteries as an incentive for vaccinations, although there have been no studies as of yet on the South African population.
+Probles with vaccine studies: too few participants. A larger study could fill this gap in the literature.
+
+
+# Treatment and Data
+
+# Partner Institutions and Funding
+
+# Pre-analysis plan
+
+Students must submit an essay in which they design a field experiment that could answer an interesting behavioural economic question. The essay must contain the following:
+
+•	a clear statement of the research question and motivation for why this is interesting and important;
+•	a brief review of the relevant literature (both theoretical and empirical) which highlights the research gap your experiment will address;
+•	a clear description of the experimental design and the theory of change;
+•	an explanation of how the treatments will be administered and data gathered (including proposed partner institutions);
+•	a pre-analysis plan of the empirical analysis that will be performed on the data.
+
+Overview
+In this field experiment, a person who refers his/her friend to receive a vaccine would be entered into a lucky draw, with a monetary prize, created by the government. The purpose behind this nudge is to encourage people who would otherwise not have got a Covid vaccine, to do so. The hypothesis is that there should be an increase in the total number of people receiving a Covid vaccine after the nudge is implemented. Increasing the number of vaccinations is important as medical research shows that vaccines decrease the probability of contracting Covid-19 and are also effective at reducing the severity of the symptoms of the virus for those who do contract it. 
+The Nudge
+The nudge addresses behaviour by creating an environment where there is social pressure to get a vaccine (if I wanted to enter the lucky draw, I would pressure my friend into getting the vaccine). It is also likely that if a person asks her friend to get the vaccine so she can enter the lucky draw, she will reciprocate and get the vaccine as well so that her friend may enter the draw, which will also increase the number of people getting vaccinated. 
+For the vaccines that require two doses (e.g. Pfizer), a person’s name could be withdrawn, if the second shot is not given within a certain amount of time. This makes use of loss aversion, where people who already have their names in the draw feel the pain of having their names withdrawn more intensely than the pleasure of having their names added a second time to the draw for getting their second shot.
+Target Group
+The lucky draw is anticipated to attract people who are risk-on (they enjoy gambling, and are less worried about getting vaccinated), and poorer individuals for whom winning money is more attractive. These target groups are desirable as they are less likely to get the vaccine, and the government would like to maximise the number of vaccinated people. Additionally, if there are individuals who want to be vaccinated but procrastinate getting the vaccine (e.g. naïve hyperbolic discounters), setting a deadline for the lucky draw could increase the utility of getting the vaccine earlier enough to overcome the procrastination problem. There is no downside or extra cost for having people enter the lucky draw who would otherwise still have got the vaccine.
+Proposed Partner Institutions
+This field experiment would be in collaboration with the South African government and facilities that conduct vaccinations (e.g. Clicks). The government would be where the data is centralized and the administers of vaccines would all be data collection nodes. After a person has received a vaccine, the administer would ask if the person received a referral for the shot, and then note the ID number of the friend in addition to the individual’s details. 
+
+Data Collection
+There is a data collection system already set up at the vaccination sites so this extra data point would not be difficult to collect within the current tracking system. Depending on costs, the referral friend could be sent an sms thanking her for caring about others and getting them vaccinated, and letting her know that she has been entered into the draw. This is a positive reinforcement technique and shows people that the government is following up on their promise. This acknowledgement and transparency is expected to encourage more referrals. Once the lucky draw has been concluded, the data can be analysed, the purpose of which is to uncover whether the nudge increased vaccinations. 
+
+
+References are to be made as follows: @fama1997[p. 33] and @grinold2000 Such authors could also be referenced in brackets [@grinold2000] and together [@fama1997 \& @grinold2000]. Source the reference code from scholar.google.com by clicking on ``cite'' below article name. Then select BibTeX at the bottom of the Cite window, and proceed to copy and paste this code into your ref.bib file, located in the directory's Tex folder. Open this file in Rstudio for ease of management, else open it in your preferred Tex environment. Add and manage your article details here for simplicity - once saved, it will self-adjust in your paper.
+
+> I suggest renaming the top line after \@article, as done in the template ref.bib file, to something more intuitive for you to remember. Do not change the rest of the code. Also, be mindful of the fact that bib references from google scholar may at times be incorrect. Reference Latex forums for correct bibtex notation.
+
+
+
+```{r Figure1,  warning =  FALSE, fig.align = 'center', fig.cap = "Caption Here \\label{Figure1}", fig.ext = 'png', fig.height = 3, fig.width = 6}
+
+  # This is just a random plot to show you a plot. This is done if the getwd() does not point to your Template's directory.
+  # Set WD below to your project's working directory.
+
+  g <-
+  ggplot(data = mtcars) +
+  geom_point(aes(x = disp, y = hp, color = cyl)) +
+  theme_bw() +
+  # theme(legend.position = "none") +
+  theme(plot.title = element_text(size = 10)) +
+  theme(axis.title = element_text(size = 10),
+        axis.title.x = element_text()) +
+  labs(y = "y-axis", x = "x-axis", title = "Some amazing plot")
+
+g
+
+```
+
+According to @stat, 34% of South Africans are vaccinated, while only 25% are fully vaccinated.  
+```{r ShortTable, results = 'asis'}
+
+library(xtable)
+library(dplyr)
+
+Province <- c("Eastern Cape", "Free State","Gauteng", "KwaZulu-Natal", "Limpopo", "Mpumalanga", "North West", "Northern Cape", "Western Cape", "Total")
+vaccine <- c(1603045,735696,3523373,2170526,1437846,831759,835206,290962,2141933)
+sum <- sum(vaccine)
+
+population <- c(4099543,1914521,11311326,7219795,3695801,3039520,2693247,847545,4976903)
+
+s <- sum(population)
+
+percent <- as.character(c(round((vaccine/population)*100))) 
+
+symbol <- c("%","%","%","%","%","%","%","%","%")
+
+per <- paste(percent, symbol, sep = "")
+
+l <- sum/s
+
+pe <- c(per, "34%")
+
+vac <- c("1 603 045","735 696","3 523 373","2 170 526","1 437 846","831 759","835 206","290 962","2 141 933", "13 570 346")
+
+pop <- c("4 099 543","1 914 521","11 311 326","7 219 795","3 695 801","3 039 520","2 693 247","847 545","4 976 903", "39 798 201")
+   
+data <- data.frame(Province, vac, pop, pe) %>% rename("Percentage Vaccinated" = pe) %>% rename("Total Adults Vaccinated" = vac, "Adult Population" = pop)
+
+table <- xtable(data, caption = "Vaccination Statistics \\label{tab1}")
+  print.xtable(table,
+             # tabular.environment = "longtable",
+             floating = TRUE,
+             table.placement = 'H',
+             # scalebox = 0.3,
+             comment = FALSE,
+             caption.placement = 'bottom',
+             include.rownames = FALSE,
+             booktabs = T # Aesthetics
+             )
+
+```
+
+To reference calculations __in text__, _do this:_ From table \ref{tab1} we see the average value of mpg is `r mean(mtcars[1:5,]$mpg)`.
+
+```{r LongTable, results = 'asis'}
+
+library(xtable)
+
+data = mtcars %>% tibble::as_tibble()
+  addtorow          <- list()
+  addtorow$pos      <- list()
+  addtorow$pos[[1]] <- c(0)
+  addtorow$command  <- c(paste("\\hline \n",
+                               "\\endhead \n",
+                               "\\hline \n",
+                               "{\\footnotesize Continued on next page} \n",
+                               "\\endfoot \n",
+                               "\\endlastfoot \n",sep=""))
+table <- xtable(data, caption = "Long Table Example")
+  print.xtable(table,
+             tabular.environment = "longtable",
+             floating = FALSE, # Leave this as is.
+             table.placement = 'H', # Leave this as is.
+             booktabs = T, # Aesthetics
+             include.rownames = FALSE,  # Typically you don't want this in a table.
+             add.to.row = addtorow, # For adding the Continued on next page part...
+             comment = FALSE,
+             caption.placement = 'top',  # Where do you want the caption?
+             size="\\fontsize{12pt}{13pt}\\selectfont"  # Size of text in table..
+             )
+# See https://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf for table inspiration
+```
+
+\hfill
+
+<!-- hfill can be used to create a space, like here between text and table. -->
+
+
+## Huxtable
+
+Huxtable is a very nice package for making working with tables between Rmarkdown and Tex easier.
+
+This cost some adjustment to the Tex templates to make it work, but it now works nicely.
+
+See documentation for this package [here](https://hughjonesd.github.io/huxtable/huxtable.html). A particularly nice addition of this package is for making the printing of regression results a joy (see [here](https://hughjonesd.github.io/huxtable/huxtable.html#creating-a-regression-table)). Here follows an example:
+
+
+If you are eager to use huxtable, comment out the Huxtable table in the Rmd template, and uncomment the colortbl package in your Rmd's root.
+
+Note that I do not include this in the ordinary template, as some latex users have complained it breaks when they build their Rmds (especially those using tidytex - I don't have this problem as I have the full Miktex installed on mine). Up to you, but I strongly recommend installing the package manually and using huxtable. To make this work, uncomment the _Adding additional latex packages_ part in yaml at the top of the Rmd file. Then comment out the huxtable example in the template below this line. Reknit, and enjoy.
+
+```{r, results = 'asis'}
+
+if(!require(huxtable)) install.packages(huxtable)
+library(huxtable)
+data(diamonds, package = 'ggplot2')
+Title <- "Regression Output"
+Label <- "Reg01"
+lm1 <- lm(price ~ carat, diamonds)
+lm2 <- lm(price ~ depth, diamonds)
+lm3 <- lm(price ~ carat + depth, diamonds)
+htab <-
+huxreg(lm1, lm2, lm3,
+                statistics = c(N = "nobs", R2 = "r.squared"),
+                note = "%stars%.") %>%
+  set_caption(Title) %>%
+  set_label(Label)
+# More settings:
+font_size(htab) <- 12
+# Let's change regression names: this is slightly hacky, but works. Comment out this section to see what the default looks like:
+  Names <- c( "Reg1", "Reg2", "Reg3")
+  for(i in 1:length(Names)) {
+    htab[1,][[1+i]] <- Names[i]
+  }
+# Now simply call the table:
+htab
+
+```
+
+FYI - R also recently introduced the gt package, which is worthwhile exploring too.
+
+# Lists
+
+To add lists, simply using the following notation
+
+* This is really simple
+
+    + Just note the spaces here - writing in R you have to sometimes be pedantic about spaces...
+
+* Note that Rmarkdown notation removes the pain of defining \LaTeX environments!
+
+# Conclusion
+
+I hope you find this template useful. Remember, stackoverflow is your friend - use it to find answers to questions. Feel free to write me a mail if you have any questions regarding the use of this package. To cite this package, simply type citation("Texevier") in Rstudio to get the citation for @Texevier (Note that uncited references in your bibtex file will not be included in References).
+
+<!-- Make title of bibliography here: -->
+<!-- \newpage -->
+
+\newpage
+
+# References {-}
+
+<div id="refs"></div>
+
+
+# Appendix {-}
+
+## Appendix A {-}
+
+Some appendix information here
+
+## Appendix B {-}
+
