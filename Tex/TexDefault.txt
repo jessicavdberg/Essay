@@ -245,13 +245,13 @@ $endif$
     {\Large $Entry3$\par}
     \vspace{1cm}
 %Degree
-    {\large $Entry4$\par}
+    {\Large $Entry4$\par}
     \vspace{1cm}
 %Institution
-    {\large $Entry5$\par}
+    {\Large $Entry5$\par}
     \vspace{1cm}
 %Date
-    {\large $Entry6$}
+    {\Large $Entry6$}
 %More
     {\normalsize $Entry7$}
 %More

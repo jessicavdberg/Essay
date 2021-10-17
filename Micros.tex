@@ -173,15 +173,15 @@
 \begin{minipage}{0.75\linewidth}
     \centering
 %Entry1
-    {\uppercase{\huge A Game Theoretic Approach to Deadline Adherence in
-the Face of Incomplete Information\par}}
+    {\uppercase{\huge A Game Theoretic Approach to Deadline
+Adherence\par}}
     \vspace{2cm}
 %Author's name
     {\LARGE Microeconomics 871 Essay\par}
     \vspace{1cm}
 %University logo
 \begin{center}
-    \includegraphics[width=0.9\linewidth]{Tex/Logo.png}
+    \includegraphics[width=0.3\linewidth]{Tex/Logo.png}
 \end{center}
 \vspace{1cm}
 %Supervisor's Details
@@ -189,13 +189,13 @@ the Face of Incomplete Information\par}}
     {\Large \textbf{Jessica van der Berg - 20190565}\par}
     \vspace{1cm}
 %Degree
-    {\large \textbf{Laura Meyer - 20748302}\par}
+    {\Large \textbf{Laura Meyer - 20748302}\par}
     \vspace{1cm}
 %Institution
-    {\large \textbf{Cassandra Pengelly - 20346212}\par}
+    {\Large \textbf{Cassandra Pengelly - 20346212}\par}
     \vspace{1cm}
 %Date
-    {\large 18 October 2021 \textbar{} Word Count: 2980}
+    {\Large 18 October 2021 \textbar{} Word Count: 2980}
 %More
     {\normalsize }
 %More
@@ -254,26 +254,224 @@ the Face of Incomplete Information\par}}
 \section{\texorpdfstring{Introduction
 \label{intro}}{Introduction }}\label{introduction}}
 
-\hypertarget{methodology}{%
-\section{\texorpdfstring{Methodology
-\label{method}}{Methodology }}\label{methodology}}
+Every day people, firms and governments have to make decisions, and
+often their decisions depend on other people's decisions. For example,
+it's only useful for people and firms to accept the Rand as money, if
+other people and firms accept the Rand as money. Economists have long
+been interested in modelling human behaviour, and game theory has been
+developed as a tool to help us better understand situations where people
+interact with one another and make decisions
+(\protect\hyperlink{ref-book}{Osborne, 2004: 1}). One example of where
+game theory can be applied to explain how we make decisions is deadline
+adherence. At some stage in their lives, every person has had to submit
+an assignment, an essay or a report by some deadline. Game theory can
+offer insights as to when a person should submit work on time or late,
+even when there is incomplete information.
 
-\hypertarget{game}{%
-\section{\texorpdfstring{Game \label{}}{Game }}\label{game}}
+We investigate a case where a student is required to hand in an
+assignment but experiences a crisis before the deadline, and has to
+choose whether to submit her assignment on time or to hand in late. We
+impose a structure of continuous types for both players, with a discrete
+set of actions. This essay is structured as follows: section \ref{lit}
+briefly discusses the literature on games of incomplete information and
+some applications. Section \ref{game} presents the deadline adherence
+game theory model; and section \ref{result} analyses the results of the
+game. The final section concludes (\ref{con}).
+
+\hypertarget{games-of-incomplete-information}{%
+\section{\texorpdfstring{Games of Incomplete Information
+\label{lit}}{Games of Incomplete Information }}\label{games-of-incomplete-information}}
+
+We follow the approach of \protect\hyperlink{ref-harsanyi}{Harsanyi}
+(\protect\hyperlink{ref-harsanyi}{1995}) in applying a game theoretic
+model of incomplete information, where players have less than full
+information about each others' payoff functions. Based on the Bayesian
+methodology, the two players have expectations in the form of subjective
+probability distributions. We use a lottery to assign types to players,
+before any moves are made in the game. The two players then try to
+estimate the probability of each others' types, subject to the
+information that is commonly available. In order to solve the model, the
+game of incomplete information will be reinterpreted as a game with
+complete and imperfect information, by transforming the basic
+mathematical structure.
+
+\hypertarget{a-model-of-deadline-adherence}{%
+\section{\texorpdfstring{A Model of Deadline Adherence
+\label{game}}{A Model of Deadline Adherence }}\label{a-model-of-deadline-adherence}}
+
+A student receives an assignment, which is due by a certain date set by
+the lecturer. While the student is working on the assignment, she
+undergoes a crisis and therefore spends less time on the assignment. She
+has two options: she can hand in the assignment on time or she can hand
+in late. If she hands in on time, she will get a payoff of \(a-c\),
+where \(a\) is the potential mark she would have received, and \(c\) is
+the negative impact the crisis has on her mark. However, if she submits
+her project late, she has some time to recover after the crisis and
+reduce its academic impact. Her payoff is \(a-\beta c -m\) if the
+lecturer gives her a penalty, where \(m\) is the size of the penalty.
+She gets a payoff of \(a-\beta c\) if there is no penalty. \(\beta\)
+represents the type of the student, where a high \(\beta\) suggests a
+low resiliency to crises and a low \(\beta\) suggests a high resiliency
+and a better academic recovery.
+
+On the other hand the lecturer is faced with the decision either to give
+a penalty (\(m\)) if a student submits late or not to give a penalty. If
+the lecturer gives a penalty, he feels bad since the student experienced
+a crisis. The size of this disutility depends on the size of the penalty
+and how empathetic the lecturer is - the lecturer's type (\(\delta\)).
+The more empathetic the lecturer is, the higher \(\delta\) is. The
+lecturer's and student's types are independently and randomly chosen by
+nature at the start of the game from a uniform distribution:\footnote{A
+  uniform distribution puts equal chance on any of the outcomes between
+  0 and 1 happening.} \(\delta \sim {\sf Uniform}\) and
+\(\beta \sim {\sf Uniform}\). If the lecturer
+
+A summary of the game's parameter's and restrictions are shown in figure
+\ref{sum} below.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+  \toprule
+Parameter & Parameter Represents & Range \\ 
+  \midrule
+a & Potential assignment mark & 0$<$=a=$<$1 \\ 
+  c & Cost of crisis to assignment mark & 0$<$c=$<$1 \\ 
+  B & Student's type: level of resiliency & 0$<$=B=$<$1 \\ 
+  m & Mark penalty & 0$<$m=$<$1 \\ 
+  D & Lecturer's type: level of empathy & 0$<$=D=$<$1 \\ 
+  d & Late deterrment utility & 0=$<$d=$<$1 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Summary of Game Parameters \label{sum}} 
+\end{table}
+
+Figure \ref{tab1} shows the game in simultaneous format.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{rll}
+  \toprule
+ & Penalty & No Penalty \\ 
+  \midrule
+On Time & a-c, 0 & a-c, 0 \\ 
+  Late & a-B(c) - m, D(m) & a-B(c), D(c)-d \\ 
+   \bottomrule
+\end{tabular}
+\caption{Simultaneous Game \label{tab1}} 
+\end{table}
+
+Figure \ref{Figure1} shows the game below in extensive form:
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=4.74in]{img/tree} 
+
+}
+
+\caption{Game Tree \label{Figure1}}\label{fig:Figure1}
+\end{figure}
 
 \hypertarget{results-and-discussion}{%
 \section{\texorpdfstring{Results and Discussion
 \label{result}}{Results and Discussion }}\label{results-and-discussion}}
 
-\newpage
+BR interperet Faults with game Run different examples
+
+\begin{table}[H]
+\centering
+\begin{tabular}{rll}
+  \toprule
+ & Penalty & No Penalty \\ 
+  \midrule
+On Time & 0.65, 0 & 0.65, 0 \\ 
+  Late & 0.72, -0.01 & 0.77, -0.06 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Simultaneous Game Best Response \label{tab2}} 
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{rll}
+  \toprule
+ & Student & Lecturer \\ 
+  \midrule
+Best Response & Late & Penalty \\ 
+   \bottomrule
+\end{tabular}
+\caption{Best Response\label{tab3}} 
+\end{table}
+
+\hypertarget{conclusion}{%
+\section{\texorpdfstring{Conclusion
+\label{con}}{Conclusion }}\label{conclusion}}
+
+Extensions, generality \newpage
 
 \hypertarget{references}{%
 \section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-harsanyi}{}%
+Harsanyi, J.C. 1995. Games with incomplete information. \emph{The
+American Economic Review}. 85(3):291--303. {[}Online{]}, Available:
+\url{http://www.jstor.org/stable/2118175}.
+
+\leavevmode\hypertarget{ref-book}{}%
+Osborne, M.J. 2004. \emph{An introduction to game theory}. Vol. 3. (3).
+Oxford university press New York.
+
 \end{CSLReferences}
+
+\newpage
+
+\hypertarget{appendix}{%
+\section*{\texorpdfstring{Appendix
+\label{app1}}{Appendix }}\label{appendix}}
+\addcontentsline{toc}{section}{Appendix \label{app1}}
+
+\hypertarget{payoffs}{%
+\subsection{Payoffs}\label{payoffs}}
+
+\textbf{Student payoffs:} \begin{align*}
+E[\text{On Time}]&= a- c \\
+E[\text{Late}]&=  p(a-\beta c-m) +(1-p)(a-\beta C) \\
+&=-m p+a-\beta C
+\end{align*} Student plays on time if: \begin{align*}
+a-c>a-m p-\beta c \\
+\beta c>c-m p \\
+\beta>\frac{c-m p}{c}
+\end{align*} Student plays late if: \begin{align*}
+\beta<\frac{c-m p}{c}
+\end{align*} \textbf{Lecturer Payoffs:} \begin{align*}
+E[\text{Penalty}]&=q(-\delta m)+(1-q)(0) \\
+&=q(-\delta m) \\
+E[\text{No Penalty}] &=q(\delta c-d)+(1-a)(0) \\
+&=q(\delta c-d)
+\end{align*} Lecturer gives a penalty if: \begin{align*}
+q(-\delta m)&>q(\delta c-d) \\
+-\delta m&>\delta c-d \\
+d&>\delta(c+m) \\
+\delta&<\frac{d}{c+m} \\
+\delta &<\bar{\delta}
+\end{align*} Lecturer gives no penalty if: \begin{align*}
+\delta &\geq \frac{d}{c+m} \\
+\delta &\geq \bar{\delta} \\
+\end{align*} Solving for the best responses: \begin{align*}
+\therefore p=\bar{\delta}=\operatorname{Prob}(\delta<\bar{\delta})
+\end{align*} Substitute into the student's best response function -
+student hands in on time if: \begin{align*}{}
+\beta>\frac{c-m(\bar{\delta})}{c}
+\end{align*}{} Since \(0 \leq \beta \leq 1\), \(\beta\) cannot be
+greater than 1. This implies \begin{align*}{}
+\frac{c-m(\bar{\delta})}{c} \leq 1 \\
+c-m \bar{\delta} \leq c \\
+-m \bar{\delta} \leq 0 \\
+0 \leq \bar{\delta}
+\end{align*}{} Since \(0 \leq \bar{\delta} \leq 1\), this condition will
+always hold.
 
 \bibliography{Tex/ref}
 
